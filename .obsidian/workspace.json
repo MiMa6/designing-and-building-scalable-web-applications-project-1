@@ -1,0 +1,278 @@
+{
+  "main": {
+    "id": "439a6f7baa00cb46",
+    "type": "split",
+    "children": [
+      {
+        "id": "4e14e768be50ad71",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a929258cdde4292f",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "INSTRUCTION.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true
+            }
+          },
+          {
+            "id": "846bc2843cd355ec",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "INSTRUCTION.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "539d219e973ceffe",
+    "type": "split",
+    "children": [
+      {
+        "id": "c91163d541530c95",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b0d8fffddfc9de21",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "4fa548e5c7c95b73",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "d20153ef2f278bd4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 280.5
+  },
+  "right": {
+    "id": "c229f82b74f7dbdc",
+    "type": "split",
+    "children": [
+      {
+        "id": "c2cf49cdc5b0317d",
+        "type": "tabs",
+        "dimension": 44.111570247933884,
+        "children": [
+          {
+            "id": "90003cac8b4b27ef",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": false
+              }
+            }
+          },
+          {
+            "id": "0c867096d135ed0a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "INSTRUCTION.md"
+              }
+            }
+          },
+          {
+            "id": "445aa5715061a67d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "INSTRUCTION.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "df15d081be85b473",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          },
+          {
+            "id": "10d24d111a788ef5",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "INSTRUCTION.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      },
+      {
+        "id": "834f18fce6fff138",
+        "type": "tabs",
+        "dimension": 55.888429752066116,
+        "children": [
+          {
+            "id": "5c4209acf7c3e9a8",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "INSTRUCTION.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1.3786451968914157,
+                  "close": true
+                }
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 381.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "graph:Open graph view": false,
+      "switcher:Open quick switcher": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "audio-recorder:Start/stop recording": false,
+      "obsidian-importer:Open Importer": false,
+      "obsidian-omnivore:Omnivore": false,
+      "periodic-notes:Open today": false,
+      "homepage:Open homepage": false
+    }
+  },
+  "active": "b0d8fffddfc9de21",
+  "lastOpenFiles": [
+    "PERFORMANCE_TEST_RESULTS.md",
+    "README.md",
+    "REFLECTION.md",
+    "RUNNING.md",
+    "INSTRUCTION.md",
+    "Readwise/Books/What Serverless Computing Is and Should Become.md",
+    "Readwise/Articles/Technology Vision 2024.md",
+    "Readwise/Articles/You Don’t Have To, You Choose To.md",
+    "Readwise/Articles/Unleash Your Creativity with GPT Builder Craft Your Unique ChatGPT for Any Purpose!.md",
+    "Readwise/Articles/The Power of Continuous Learning.md",
+    "Readwise/Articles/Horizontal Pod Autoscaling.md",
+    "Readwise/Articles/Paperwise.md",
+    "Readwise/Books/Kubernetes_done.pdf.md",
+    "Readwise/Articles/The Gift of Inner Solitude.md",
+    "Readwise/Articles/Privacy Policy.md",
+    "Readwise/Articles/Best INTP Careers Best Jobs for the ThinkerLogician.md",
+    "Readwise/Articles/CAP Twelve Years Later How the Rules Have Changed.md",
+    "Readwise/Articles/The Secret Life of People With High Self-Control.md",
+    "Readwise/Articles/Using Advanced Tables With Dataview for Work Hours and Financial Calculation.md",
+    "Readwise/Articles",
+    "Readwise/Books/The Psychology of Money.md",
+    "Readwise/Books/Master Your Emotions.md",
+    "Readwise/Books/How to Win Friends and Influence People.md",
+    "Readwise/Books/Think Like a Monk.md",
+    "Readwise/Books/The Anxious Perfectionist.md",
+    "Readwise/Books",
+    "Readwise",
+    "🎗️/Gratitude.md",
+    "🎗️/Self-motivation.md",
+    "🍀/img/Simeon N Chanel panda life G.png",
+    "🍀/Achievements💪🏾",
+    "🍀/Dreams🌊",
+    "🍀/Projects👷🏾‍♂️",
+    "🍀/Life🤴🏾",
+    "🍀/img",
+    "🍀/Calendar.canvas",
+    "🫂/Fitness Influencers/img/Nicole McPherson.png",
+    "🪽/img/Wisdom - Philosopher.png",
+    "🪽/img",
+    "💻/Flutter",
+    "💻/AI/img/Privacy concerns GenAi.png",
+    "💻/AI/img/Ethical concers with GenAI.png",
+    "💻/AI/Machine Learning/Confusion Matrix.png",
+    "💻/Data/Data architecture/Data Mesh.png",
+    "💻/Data/img/Modern data stack.png",
+    "💻/Data/img/Default data principlse.png",
+    "💻/img/Pasted image 20240220130423.png",
+    "💻/📑/CV/CV - Builder Canvas.canvas",
+    "🌱/Habits/Trackers/Statistics - habits🧘🏾.canvas",
+    "🌱/Health/Nutrition/Nutrition.canvas",
+    "🌱/Sustainability/Sustainability.canvas",
+    "🥜/Shopping list.canvas",
+    "🌱/Recycling/Recycling.canvas",
+    "Untitled 1.canvas"
+  ]
+}

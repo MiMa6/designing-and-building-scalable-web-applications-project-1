@@ -1,0 +1,26 @@
+{
+  "immediateReplace": true,
+  "suggester": true,
+  "historyPriority": true,
+  "historyLimit": 100,
+  "history": [
+    ":white_check_mark:",
+    ":yawning_face:",
+    ":1234:",
+    ":white_heart:",
+    ":bowing_man:",
+    ":thumbsup:",
+    ":peanuts:",
+    ":handshake:",
+    ":heavy_check_mark:",
+    ":running_man:",
+    ":100:",
+    ":1st_place_medal:",
+    ":clock1030:",
+    ":brain:",
+    ":telescope:",
+    ":mag_right:",
+    ":mag:",
+    ":calendar:"
+  ]
+}
