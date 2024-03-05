@@ -1,8 +1,20 @@
 ---
 import Layout from "../layout/Layout.astro";
-import GradingButton from "../components/GradingButton.svelte";
+import Handout from "../components/Handout.svelte";
+
+import TextfieldAndGrade from "../components/TextfieldAndGrade.svelte";
+import GradingDemoButton from "../components/GradingDemoButton.svelte";
+import GetSubmissionButton from "../components/GetSubmissionButton.svelte";
+import GetAssignmentButton from "../components/GetAssignmentButton.svelte";
+import PostSubmissionButton from "../components/PostSubmissionButton.svelte";
 ---
 
 <Layout>
-  <GradingButton client:only={"svelte"} />
+  <Handout client:only={"svelte"} />
+  <TextfieldAndGrade client:only={"svelte"} />
+
+  <GradingDemoButton client:only={"svelte"} />
+  <PostSubmissionButton client:only={"svelte"} />
+  <GetSubmissionButton client:only={"svelte"} />
+  <GetAssignmentButton client:only={"svelte"} />
 </Layout>

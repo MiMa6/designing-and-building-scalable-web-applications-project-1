@@ -4,37 +4,47 @@
     "type": "split",
     "children": [
       {
-        "id": "4e14e768be50ad71",
+        "id": "552be7fc6c2dd262",
         "type": "tabs",
         "children": [
           {
-            "id": "a929258cdde4292f",
+            "id": "a7e708f60236d927",
             "type": "leaf",
-            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "INSTRUCTION.md",
+                "file": "progress/Todo for pass.md",
                 "mode": "source",
                 "source": false
-              },
-              "pinned": true
+              }
             }
           },
           {
-            "id": "846bc2843cd355ec",
+            "id": "a132a3aaf07a2a16",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "INSTRUCTION.md",
+                "file": "progress/Progress.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "e81b08ea1761351c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "progress/Progress.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -84,7 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 280.5
+    "width": 200
   },
   "right": {
     "id": "c229f82b74f7dbdc",
@@ -112,7 +122,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "INSTRUCTION.md"
+                "file": "progress/Progress.md"
               }
             }
           },
@@ -122,7 +132,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "INSTRUCTION.md",
+                "file": "progress/Progress.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -142,7 +152,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "INSTRUCTION.md",
+                "file": "progress/Progress.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -167,7 +177,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "INSTRUCTION.md",
+                "file": "progress/Progress.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -214,17 +224,36 @@
       "audio-recorder:Start/stop recording": false,
       "obsidian-importer:Open Importer": false,
       "obsidian-omnivore:Omnivore": false,
-      "periodic-notes:Open today": false,
-      "homepage:Open homepage": false
+      "homepage:Open homepage": false,
+      "periodic-notes:Open today": false
     }
   },
-  "active": "b0d8fffddfc9de21",
+  "active": "e81b08ea1761351c",
   "lastOpenFiles": [
-    "PERFORMANCE_TEST_RESULTS.md",
-    "README.md",
-    "REFLECTION.md",
+    "progress/Figure how to map grading demo post request.png",
+    "progress/Database schema.md",
+    "progress/Progress.md",
+    "progress/Todo for pass.md",
+    "progress/Todo for merits.md",
+    "progress/Prompts.md",
+    "grader-api/result-951612977.data",
+    "grader-api/test-951612977.data",
+    "grader-api/submission-951612977.data",
+    "grader-api/result-745747677.data",
+    "grader-api/test-745747677.data",
+    "grader-api/submission-745747677.data",
+    "grader-api/result-122211531.data",
+    "grader-api/test-122211531.data",
+    "grader-api/submission-122211531.data",
+    "programming-ui/src/components/PostSubmissionButton.svelte",
+    "progress/Instruction.md",
+    "Figure how to map grading demo post request.png",
+    "progress/app.js memo.md",
+    "progress/Functionality.md",
+    "progress/Grading in general.md",
     "RUNNING.md",
-    "INSTRUCTION.md",
+    "REFLECTION.md",
+    "README.md",
     "Readwise/Books/What Serverless Computing Is and Should Become.md",
     "Readwise/Articles/Technology Vision 2024.md",
     "Readwise/Articles/You Don’t Have To, You Choose To.md",
@@ -238,35 +267,16 @@
     "Readwise/Articles/Best INTP Careers Best Jobs for the ThinkerLogician.md",
     "Readwise/Articles/CAP Twelve Years Later How the Rules Have Changed.md",
     "Readwise/Articles/The Secret Life of People With High Self-Control.md",
-    "Readwise/Articles/Using Advanced Tables With Dataview for Work Hours and Financial Calculation.md",
-    "Readwise/Articles",
-    "Readwise/Books/The Psychology of Money.md",
-    "Readwise/Books/Master Your Emotions.md",
-    "Readwise/Books/How to Win Friends and Influence People.md",
-    "Readwise/Books/Think Like a Monk.md",
-    "Readwise/Books/The Anxious Perfectionist.md",
-    "Readwise/Books",
-    "Readwise",
-    "🎗️/Gratitude.md",
-    "🎗️/Self-motivation.md",
+    "progress/Pasted image 20240229143221.png",
+    "Pasted image 20240229143221.png",
+    "starter/programming-ui/public/favicon.svg",
+    "progress/First docker compose up.png",
     "🍀/img/Simeon N Chanel panda life G.png",
-    "🍀/Achievements💪🏾",
-    "🍀/Dreams🌊",
-    "🍀/Projects👷🏾‍♂️",
-    "🍀/Life🤴🏾",
-    "🍀/img",
     "🍀/Calendar.canvas",
     "🫂/Fitness Influencers/img/Nicole McPherson.png",
     "🪽/img/Wisdom - Philosopher.png",
-    "🪽/img",
-    "💻/Flutter",
     "💻/AI/img/Privacy concerns GenAi.png",
     "💻/AI/img/Ethical concers with GenAI.png",
-    "💻/AI/Machine Learning/Confusion Matrix.png",
-    "💻/Data/Data architecture/Data Mesh.png",
-    "💻/Data/img/Modern data stack.png",
-    "💻/Data/img/Default data principlse.png",
-    "💻/img/Pasted image 20240220130423.png",
     "💻/📑/CV/CV - Builder Canvas.canvas",
     "🌱/Habits/Trackers/Statistics - habits🧘🏾.canvas",
     "🌱/Health/Nutrition/Nutrition.canvas",

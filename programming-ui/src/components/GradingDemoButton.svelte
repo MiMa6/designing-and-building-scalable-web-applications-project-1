@@ -1,14 +1,14 @@
 <script>
   import { userUuid } from "../stores/stores.js";
-  
+
   const doSimpleGradingDemo = async () => {
     const data = {
       user: $userUuid,
       code: `def hello():
-  return "helo world!"
+  return "Hello"
 `,
     };
-    
+
     const response = await fetch("/api/grade", {
       method: "POST",
       headers: {
