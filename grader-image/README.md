@@ -7,7 +7,7 @@ image. Running the new image executes the test code written to `test-code.py`
 and outputs the test results into the file `result.data` in th `/app/submission`
 folder.
 
-Once the grading is done, contents from `/app/submission/result.data` can be
+Once the grading ids done, contents from `/app/submission/result.data` can be
 read, and the new image can be removed.
 
 The base grader image can be built using either the `build.sh` command or the

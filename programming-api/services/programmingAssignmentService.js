@@ -4,4 +4,12 @@ const findAll = async () => {
   return await sql`SELECT * FROM programming_assignments;`;
 };
 
-export { findAll };
+const findRandom = async () => {
+  return await sql`SELECT * FROM programming_assignments ORDER BY RANDOM() LIMIT 1;`;
+};
+
+const findSpecific = async (id) => {
+  return await sql`SELECT * FROM programming_assignments WHERE id = ${id};`;
+};
+
+export { findAll, findRandom, findSpecific };
