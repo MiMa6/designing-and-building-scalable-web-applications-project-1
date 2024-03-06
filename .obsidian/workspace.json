@@ -4,35 +4,23 @@
     "type": "split",
     "children": [
       {
-        "id": "552be7fc6c2dd262",
+        "id": "48222c9025d954d4",
         "type": "tabs",
         "children": [
           {
-            "id": "a7e708f60236d927",
+            "id": "429cca0a64e12862",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "progress/Todo for pass.md",
+                "file": "progress/Database schema.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "a132a3aaf07a2a16",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "progress/Progress.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e81b08ea1761351c",
+            "id": "f9231cdba5223a34",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -44,7 +32,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -228,24 +216,25 @@
       "periodic-notes:Open today": false
     }
   },
-  "active": "e81b08ea1761351c",
+  "active": "f9231cdba5223a34",
   "lastOpenFiles": [
-    "progress/Figure how to map grading demo post request.png",
     "progress/Database schema.md",
     "progress/Progress.md",
+    "grader-api/result-559680338.data",
+    "grader-api/test-559680338.data",
+    "grader-api/submission-559680338.data",
+    "grader-api/result-832129510.data",
+    "grader-api/test-832129510.data",
+    "grader-api/submission-832129510.data",
+    "grader-api/result-251152747.data",
+    "grader-api/test-251152747.data",
+    "grader-api/submission-251152747.data",
+    "grader-api/result-423311483.data",
+    "progress/PSQL.md",
+    "progress/Figure how to map grading demo post request.png",
     "progress/Todo for pass.md",
     "progress/Todo for merits.md",
     "progress/Prompts.md",
-    "grader-api/result-951612977.data",
-    "grader-api/test-951612977.data",
-    "grader-api/submission-951612977.data",
-    "grader-api/result-745747677.data",
-    "grader-api/test-745747677.data",
-    "grader-api/submission-745747677.data",
-    "grader-api/result-122211531.data",
-    "grader-api/test-122211531.data",
-    "grader-api/submission-122211531.data",
-    "programming-ui/src/components/PostSubmissionButton.svelte",
     "progress/Instruction.md",
     "Figure how to map grading demo post request.png",
     "progress/app.js memo.md",
@@ -266,7 +255,6 @@
     "Readwise/Articles/Privacy Policy.md",
     "Readwise/Articles/Best INTP Careers Best Jobs for the ThinkerLogician.md",
     "Readwise/Articles/CAP Twelve Years Later How the Rules Have Changed.md",
-    "Readwise/Articles/The Secret Life of People With High Self-Control.md",
     "progress/Pasted image 20240229143221.png",
     "Pasted image 20240229143221.png",
     "starter/programming-ui/public/favicon.svg",
@@ -276,7 +264,6 @@
     "🫂/Fitness Influencers/img/Nicole McPherson.png",
     "🪽/img/Wisdom - Philosopher.png",
     "💻/AI/img/Privacy concerns GenAi.png",
-    "💻/AI/img/Ethical concers with GenAI.png",
     "💻/📑/CV/CV - Builder Canvas.canvas",
     "🌱/Habits/Trackers/Statistics - habits🧘🏾.canvas",
     "🌱/Health/Nutrition/Nutrition.canvas",

@@ -55,8 +55,21 @@ const handlePostAssignmentRequest = async (request) => {
 };
 
 const handlePostSubmissionRequest = async (request) => {
-  console.log("Post Submission")
-  await submissionService.addNewSubmission();
+  const requestData = await request.json();
+
+
+  const submissionData = {
+    programming_assignment_id: requestData.programming_assignment_id,
+    code: requestData.code,
+    user_uuid: requestData.user_uuid,
+    grader_feedback: requestData.grader_feedback,
+    correct: requestData.correct,
+  }
+  console.log(submissionData)
+
+  const response = await submissionService.addNewSubmission(submissionData);
+
+  return response
 };
 
 const urlMapping = [
