@@ -1,14 +1,13 @@
 <script>
   import { assignment } from "../stores/assignmentStore.js";
+  import { textAreaValue } from "../stores/textAreaStore.js";
   import { userUuid } from "../stores/stores.js";
   
-  const fetchAssignments = async () => {
+  const postSubmission = async () => {
 
-    // TODO: real assignment values
-    console.log("assignment", assignment)
-    const data = {
+    const dataBefore = {
       programming_assignment_id: $assignment.id,
-      code: "Koodi Koodi Koodi", //todo code from field
+      code: $textAreaValue,
       user_uuid: $userUuid,
       grader_feedback: "",
       correct: false,
@@ -19,16 +18,17 @@
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(dataBefore),
     });
 
+    console.log("Response from check  sub")
     console.log(response);
   };
 </script>
 
 <button
   class="bg-pink-100 hover:bg-red-700 text-white font-bold p-4 rounded m-4"
-  on:click={fetchAssignments}
+  on:click={postSubmission}
 >
   Post submissions
 </button>
