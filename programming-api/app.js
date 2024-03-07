@@ -31,7 +31,7 @@ const handleGetAllSubmissionsRequest = async (request) => {
 
 const handlePostAssignmentRequest = async (request) => {
   const requestData = await request.json();
-  const assignmentId = requestData.id;
+  const assignmentId = requestData.programming_assignment_id;
 
   const programmingAssignments =
     await programmingAssignmentService.findSpecific(assignmentId);
@@ -43,20 +43,25 @@ const handlePostAssignmentRequest = async (request) => {
     code: requestData.code,
   };
 
-  const response = await fetch("http://grader-api:7000/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  try {
+    const response = await fetch("http://grader-api:7000/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    return response;
+  } catch (error) {
+    console.error("Error in grader-image:", error.message);
+    return new Response("err", { status: 400 });
+  
+  }
 
-  return response;
 };
 
-const handlePostSubmissionRequest = async (request) => {
+const handlePostSubmissionNewRequest = async (request) => {
   const requestData = await request.json();
-
 
   const submissionData = {
     programming_assignment_id: requestData.programming_assignment_id,
@@ -64,14 +69,65 @@ const handlePostSubmissionRequest = async (request) => {
     user_uuid: requestData.user_uuid,
     grader_feedback: requestData.grader_feedback,
     correct: requestData.correct,
-  }
-  console.log(submissionData)
+  };
+  console.log(submissionData);
 
   const response = await submissionService.addNewSubmission(submissionData);
 
-  return response
+  return response;
 };
 
+const handlePostSubmissionCopyRequest = async (request) => {
+  console.log("handlePostSubmissionCopyRequest")
+  
+  const requestData = await request.json();
+  const submissionData = {
+    programming_assignment_id: requestData.programming_assignment_id,
+    code: requestData.code,
+    user_uuid: requestData.user_uuid,
+  };
+  console.log(submissionData);
+
+  const response = await submissionService.addNewSubmissionCopy(submissionData);
+
+  return response;
+};
+
+const handlePostSubmissionCheckRequest = async (request) => {
+  const requestData = await request.json();
+
+  const submissionData = {
+    programming_assignment_id: requestData.programming_assignment_id,
+    code: requestData.code,
+    user_uuid: requestData.user_uuid,
+  };
+
+  console.log(submissionData);
+
+  const response = await submissionService.checkSubmission(submissionData);
+
+  return response;
+};
+
+// TODO delete when not needded anymore
+const handlePostSubmissionUpdateRequest = async (request) => {
+  const requestData = await request.json();
+
+  const updatedSubmissionData = {
+    programming_assignment_id: requestData.programming_assignment_id,
+    code: requestData.code,
+    user_uuid: requestData.user_uuid,
+    grader_feedback: requestData.grader_feedback,
+    correct: requestData.correct,
+  };
+
+  const response = await submissionService.updateSubmission(
+    updatedSubmissionData
+  );
+  return response;
+};
+
+// TODO: Update submission related requests to start with /submission, e.g. /submission/check
 const urlMapping = [
   {
     method: "GET",
@@ -100,8 +156,23 @@ const urlMapping = [
   },
   {
     method: "POST",
-    pattern: new URLPattern({ pathname: "/submissions" }),
-    fn: handlePostSubmissionRequest,
+    pattern: new URLPattern({ pathname: "/submissions/new" }),
+    fn: handlePostSubmissionNewRequest,
+  },
+  {
+    method: "POST",
+    pattern: new URLPattern({ pathname: "/submissions/copy" }),
+    fn: handlePostSubmissionCopyRequest,
+  },
+  {
+    method: "POST",
+    pattern: new URLPattern({ pathname: "/check" }),
+    fn: handlePostSubmissionCheckRequest,
+  },
+  {
+    method: "POST",
+    pattern: new URLPattern({ pathname: "/update" }),
+    fn: handlePostSubmissionUpdateRequest,
   },
 ];
 

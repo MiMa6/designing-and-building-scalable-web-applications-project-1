@@ -4,23 +4,49 @@
     "type": "split",
     "children": [
       {
-        "id": "48222c9025d954d4",
+        "id": "138de050498b4d9c",
         "type": "tabs",
         "children": [
           {
-            "id": "429cca0a64e12862",
+            "id": "caa573dcebbb5245",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "progress/Progress.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true
+            }
+          },
+          {
+            "id": "8aca3919423d01c3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "progress/Database schema.md",
+                "file": "progress/Instruction.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "f9231cdba5223a34",
+            "id": "9f7263c5f573a1f0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "progress/Todo for pass.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d30029e89b0a212e",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -30,9 +56,33 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "43754fcb2c79c799",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "progress/Database schema.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "823a858ef28798f8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "progress/Database schema.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -61,7 +111,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "feedback",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,7 +128,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -110,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "progress/Progress.md"
+                "file": "progress/Database schema.md"
               }
             }
           },
@@ -120,7 +171,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "progress/Progress.md",
+                "file": "progress/Database schema.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -140,7 +191,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "progress/Progress.md",
+                "file": "progress/Database schema.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -165,7 +216,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "progress/Progress.md",
+                "file": "progress/Database schema.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -216,30 +267,40 @@
       "periodic-notes:Open today": false
     }
   },
-  "active": "f9231cdba5223a34",
+  "active": "43754fcb2c79c799",
   "lastOpenFiles": [
-    "progress/Database schema.md",
+    "progress/UI (2024-03-06).png",
+    "progress/temp.json",
+    "progress/Submission logic.webm",
     "progress/Progress.md",
-    "grader-api/result-559680338.data",
-    "grader-api/test-559680338.data",
-    "grader-api/submission-559680338.data",
-    "grader-api/result-832129510.data",
-    "grader-api/test-832129510.data",
-    "grader-api/submission-832129510.data",
-    "grader-api/result-251152747.data",
-    "grader-api/test-251152747.data",
-    "grader-api/submission-251152747.data",
-    "grader-api/result-423311483.data",
-    "progress/PSQL.md",
-    "progress/Figure how to map grading demo post request.png",
+    "progress/Grading results.md",
+    "progress/Database schema.md",
+    "grader-api/result-366380965.data",
+    "grader-api/test-366380965.data",
+    "grader-api/submission-366380965.data",
+    "grader-api/result-158892421.data",
+    "grader-api/test-158892421.data",
+    "grader-api/submission-158892421.data",
+    "Submission logic.webm",
+    "Grading results.md",
+    "grader-api/result-850663895.data",
+    "progress/Instruction.md",
     "progress/Todo for pass.md",
+    "progress/Grading in general.md",
+    "progress/Functionality.md",
+    "progress/Post Submission - Flowchart.jpg",
+    "progress/DBSWA - Post Submission - Flowchart2.jpg",
+    "progress/error - apk kit.png",
+    "progress/PSQL.md",
+    "progress/Submission - Flowchart.png",
+    "progress/Pasted image 20240229143221.png",
+    "progress/UI.md",
+    "UI (2024-03-06).png",
+    "progress/Figure how to map grading demo post request.png",
     "progress/Todo for merits.md",
     "progress/Prompts.md",
-    "progress/Instruction.md",
     "Figure how to map grading demo post request.png",
     "progress/app.js memo.md",
-    "progress/Functionality.md",
-    "progress/Grading in general.md",
     "RUNNING.md",
     "REFLECTION.md",
     "README.md",
@@ -252,18 +313,9 @@
     "Readwise/Articles/Paperwise.md",
     "Readwise/Books/Kubernetes_done.pdf.md",
     "Readwise/Articles/The Gift of Inner Solitude.md",
-    "Readwise/Articles/Privacy Policy.md",
-    "Readwise/Articles/Best INTP Careers Best Jobs for the ThinkerLogician.md",
-    "Readwise/Articles/CAP Twelve Years Later How the Rules Have Changed.md",
-    "progress/Pasted image 20240229143221.png",
     "Pasted image 20240229143221.png",
     "starter/programming-ui/public/favicon.svg",
-    "progress/First docker compose up.png",
-    "🍀/img/Simeon N Chanel panda life G.png",
     "🍀/Calendar.canvas",
-    "🫂/Fitness Influencers/img/Nicole McPherson.png",
-    "🪽/img/Wisdom - Philosopher.png",
-    "💻/AI/img/Privacy concerns GenAi.png",
     "💻/📑/CV/CV - Builder Canvas.canvas",
     "🌱/Habits/Trackers/Statistics - habits🧘🏾.canvas",
     "🌱/Health/Nutrition/Nutrition.canvas",
