@@ -19,8 +19,8 @@
 
 <textarea
   bind:value={$textAreaValue}
-  style="width: 100%; max-width: 36rem; padding: 1rem; border: 1px solid gray; border-radius: 0.25rem;"
-  class="p-3 bg-transparent border border-gray-500 rounded-sm"
+  style="width: 100%; padding: 1rem; border: 1px solid gray; border-radius: 0.25rem;"
+  class="text-base text-black font-base"
   name=""
   id=""
   rows="10"

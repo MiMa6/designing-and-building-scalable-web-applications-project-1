@@ -1,6 +1,25 @@
 <script>
   import { assignment } from "../stores/assignmentStore.js";
+  import { totalPoints } from "../stores/scoreStore.js";
+  import { userUuid } from "../stores/stores.js";
   import { onMount } from "svelte";
+
+  const fetchTotalPoints = async () => {
+    const data = {
+      user_uuid: $userUuid,
+    };
+
+    const response = await fetch("/api/points", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const responseData = await response.json();
+    console.log(responseData);
+    totalPoints.set(responseData.data);
+  };
 
   const fetchRandomAssignment = async () => {
     console.log("Fetching random assignment");
@@ -18,19 +37,16 @@
     console.log($assignment);
   };
 
+  onMount(fetchTotalPoints);
   onMount(fetchRandomAssignment);
+
 </script>
 
-<div class="flex w-full p-8 border-b-4 border-gray-300">
-  <span class="flex-shrink-0 w-12 h-12 bg-blue-400 rounded-full"></span>
-
-  <div class="flex flex-col flex-grow ml-4">
-    <div class="p-4 bg-white rounded shadow"></div>
-    <h2 class="text-xl font-bold mb-2">
-      {$assignment ? $assignment.title : "loading"}
-    </h2>
-    <p class="text-gray-700">
-      {$assignment ? $assignment.handout : "Loading"}
-    </p>
-  </div>
+<div class="flex py-5 px-10 flex-col flex-grow ml-4">
+  <p class="text-xl text-black font-semibold text-left">
+    {$assignment ? $assignment.title : "loading"}
+  </p>
+  <p class="text-lg text-black font-medium text-left">
+    {$assignment ? $assignment.handout : "Loading"}
+  </p>
 </div>
