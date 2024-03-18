@@ -1,8 +1,11 @@
 <script>
   import { userUuid } from "../stores/stores.js";
-  import { graderData } from "../stores/graderStore.js";
   import { assignment } from "../stores/assignmentStore.js";
   import { textAreaValue } from "../stores/textAreaStore.js";
+
+  let submissionStatus = "";
+  let graderFeedback = "";
+  let correctAnswer = "";
 
   const clearnErrorMessage = (errorMessage) => {
     const lines = errorMessage.split("\n");
@@ -14,7 +17,6 @@
     return firstWordClean;
   };
 
-  // TODO bidirectional communication
   const doGrading = async (dataForGrading) => {
     console.log("Sent data to grader: \n" + dataForGrading.code);
 
@@ -25,11 +27,12 @@
       },
       body: JSON.stringify(dataForGrading),
     });
-    const graderResponseData = await response.json();
 
+    const graderResponseData = await response.json();
     const errorType = clearnErrorMessage(graderResponseData.result);
-    console.log(`errorType ${errorType}`);
-    // alert(JSON.stringify(jsonData));
+
+    graderFeedback = graderResponseData.result;
+    (submissionStatus = "processed"), console.log(`errorType ${errorType}`);
 
     if (errorType === "OK") {
       console.log("errortype ok, creating new sub");
@@ -37,33 +40,49 @@
         ...dataForGrading,
         grader_feedback: graderResponseData.result,
         correct: true,
+        status: "processed",
       });
+      correctAnswer = true;
+      alert("Your Answer Was Correct\n Well done!");
     } else if (errorType === "FAILED") {
       postSubmission({
         ...dataForGrading,
         grader_feedback: graderResponseData.result,
         correct: false,
+        status: "processed",
       });
+      correctAnswer = false;
+      alert(graderResponseData.result);
     } else if (errorType === "SyntaxError") {
       postSubmission({
         ...dataForGrading,
         grader_feedback: graderResponseData.result,
         correct: false,
+        status: "processed",
       });
+      correctAnswer = true;
+      alert(graderResponseData.result);
     } else {
       postSubmission({
         ...dataForGrading,
         grader_feedback: graderResponseData.result,
         correct: false,
+        status: "processed",
       });
-      console.log("Infinite loop");
+      correctAnswer = true;
+      console.log("Other error");
+
+      submissionStatus = "";
+      graderFeedback = responseData.data.grader_feedback;
+      correctAnswer = "";
+      alert(graderResponseData.result);
     }
     console.log("Done");
   };
 
   const checkSubmission = async () => {
-    // TODO: change submission status to "processing" and create submission Store
-    const data = {
+    submissionStatus = "pending";
+    let data = {
       programming_assignment_id: $assignment.id,
       code: $textAreaValue,
       user_uuid: $userUuid,
@@ -71,7 +90,6 @@
 
     console.log("Check if existing submission in db");
 
-    // TOdo if exists save valut to response
     const response = await fetch("/api/check", {
       method: "POST",
       headers: {
@@ -79,40 +97,60 @@
       },
       body: JSON.stringify(data),
     });
-    const responseData = await response;
-    console.log(responseData);
+    const responseData = await response.json();
 
     if (responseData.status === 200) {
+      console.log(
+        "Submission already exists, copy latest grader feedback values..."
+      );
 
-      console.log("Submission already exists, copy values...");
+      const response2 = await fetch("/api/submissions/copy", {
+        method: "Post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-      // TODO instead of updating copy values from db to new submissio
-      const response = await fetch("/api/submissions/copy", {
-      method: "Post",
+      if (responseData.data.status) {
+        submissionStatus = responseData.data.status;
+        graderFeedback = responseData.data.grader_feedback;
+        correctAnswer = responseData.data.correct;
+      }
+
+      console.log("New submission created");
+      submissionStatus = "processed";
+
+      graderFeedback = responseData.data.grader_feedback;
+      alert(responseData.data.grader_feedback);
+    } else if (responseData.status === 400) {
+      console.log("Submission does not exists");
+      doGrading(data);
+      submissionStatus = "processed";
+    } else {
+      submissionStatus = "processed";
+      console.log("Error in checking submission");
+      alert("Error in checking submission");
+    }
+  };
+
+  const fetchTotalPoints = async () => {
+    const data = {
+      user_uuid: $userUuid,
+    };
+
+    const response = await fetch("/api/points", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
-
-    console.log("Response from new submission");
-    console.log(response);
-    console.log("New submission created");
-
-      //const responseData = await response;
-      //console.log(responseData);
-    } else if (responseData.status === 404) {
-      // TODO: create submission
-      doGrading(data);
-      // TODO: update submission
-    } else {
-      console.log("Error in checking submission");
-    }
+    const responseData = await response.json();
+    console.log(responseData);
   };
 
-  // TODO correct values to dataSubmission
   const postSubmission = async (dataForNewSubmission) => {
-
     const response = await fetch("/api/submissions/new", {
       method: "Post",
       headers: {
@@ -121,35 +159,30 @@
       body: JSON.stringify(dataForNewSubmission),
     });
 
-    console.log("Response from new submission");
-    console.log(response);
     console.log("New submission created");
-  };
+    console.log(response);
 
-  // TODO: Combine buttons to single grading button but save logic for submissions in same file
-  // Rename file to grading
+    console.log("Fetching total points for userUuid");
+    fetchTotalPoints();
+  };
 </script>
 
-<div class="w-full md:w-1/2">
-  <h2 class="text-2xl font-bold mb-4">Submission Status</h2>
-  <div class="prose">
-    <p>Submission status: <span class="text-green-500">Processed</span></p>
-    <p>Grader feedback: <span class="text-green-500">Well done</span></p>
-    <p>Correct: <span class="text-green-500">Yes</span></p>
+<div class="w-full md:w-1/2 py-5 px-10">
+  <div class="prosess">
+    <p>
+      Submission status: <span class="text-green-500">{submissionStatus}</span>
+    </p>
+    <p>
+      Grader feedback: <span class="text-green-500">{graderFeedback}</span>
+    </p>
+    <p>Correct: <span class="text-green-500">{correctAnswer}</span></p>
   </div>
 </div>
 <div class="flex justify-between mt-2"></div>
 
 <button
-  class="bg-green-500 hover:bg-brown-700 text-white font-bold p-4 rounded m-4"
-  on:click={doGrading}
->
-  Do grading!
-</button>
-
-<button
-  class="bg-red-500 hover:bg-brown-700 text-white font-bold p-4 rounded m-4"
+  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
   on:click={checkSubmission}
 >
-  Check existing Sub
+  Grading
 </button>

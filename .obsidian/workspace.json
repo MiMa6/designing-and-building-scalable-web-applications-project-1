@@ -4,85 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "138de050498b4d9c",
+        "id": "632a9cbe0a33a5db",
         "type": "tabs",
         "children": [
           {
-            "id": "caa573dcebbb5245",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "progress/Progress.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
-            }
-          },
-          {
-            "id": "8aca3919423d01c3",
+            "id": "a7237d9737591f29",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "progress/Instruction.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "9f7263c5f573a1f0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "progress/Todo for pass.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "d30029e89b0a212e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "progress/Progress.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "43754fcb2c79c799",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "progress/Database schema.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "823a858ef28798f8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "progress/Database schema.md",
+                "file": "progress/Websocket for later use 2024-03-18.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "vertical"
@@ -111,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "feedback",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -128,12 +65,12 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 430.5,
+    "collapsed": true
   },
   "right": {
     "id": "c229f82b74f7dbdc",
@@ -161,7 +98,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "progress/Database schema.md"
+                "file": "progress/Websocket for later use 2024-03-18.md"
               }
             }
           },
@@ -171,7 +108,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "progress/Database schema.md",
+                "file": "progress/Websocket for later use 2024-03-18.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -191,7 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "progress/Database schema.md",
+                "file": "progress/Websocket for later use 2024-03-18.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -216,7 +153,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "progress/Database schema.md",
+                "file": "progress/Websocket for later use 2024-03-18.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -267,40 +204,45 @@
       "periodic-notes:Open today": false
     }
   },
-  "active": "43754fcb2c79c799",
+  "active": "a7237d9737591f29",
   "lastOpenFiles": [
-    "progress/UI (2024-03-06).png",
-    "progress/temp.json",
-    "progress/Submission logic.webm",
-    "progress/Progress.md",
-    "progress/Grading results.md",
-    "progress/Database schema.md",
-    "grader-api/result-366380965.data",
-    "grader-api/test-366380965.data",
-    "grader-api/submission-366380965.data",
-    "grader-api/result-158892421.data",
-    "grader-api/test-158892421.data",
-    "grader-api/submission-158892421.data",
-    "Submission logic.webm",
-    "Grading results.md",
-    "grader-api/result-850663895.data",
+    "grader-api/result-466557154.data",
+    "grader-api/test-466557154.data",
+    "grader-api/submission-466557154.data",
+    "grader-api/result-296183116.data",
+    "grader-api/test-296183116.data",
+    "grader-api/submission-296183116.data",
+    "grader-api/result-156629400.data",
+    "grader-api/test-156629400.data",
+    "grader-api/submission-156629400.data",
     "progress/Instruction.md",
-    "progress/Todo for pass.md",
-    "progress/Grading in general.md",
-    "progress/Functionality.md",
-    "progress/Post Submission - Flowchart.jpg",
-    "progress/DBSWA - Post Submission - Flowchart2.jpg",
-    "progress/error - apk kit.png",
+    "progress/Websocket for later use 2024-03-18.md",
+    "grader-api/result-139107706.data",
+    "grader-api/test-139107706.data",
+    "progress/Progress.md",
     "progress/PSQL.md",
+    "progress/Test functions - Grading.md",
+    "progress/Grading in general.md",
+    "progress/Todo for pass.md",
+    "progress/Database schema.md",
+    "progress/websocket mods 2024-03-14.md",
+    "First websocket status.png",
+    "progress/Todo for merits.md",
+    "progress/UI.md",
+    "progress/Functionality.md",
+    "Simple UI.jpeg",
+    "progress/app.js memo.md",
+    "progress/Prompts.md",
+    "progress/img/UI (2024-03-06).png",
+    "SQL tmp.md",
+    "Grading results.md",
+    "progress/img/Post Submission - Flowchart.jpg",
+    "progress/img/DBSWA - Post Submission - Flowchart2.jpg",
+    "progress/img/error - apk kit.png",
     "progress/Submission - Flowchart.png",
     "progress/Pasted image 20240229143221.png",
-    "progress/UI.md",
     "UI (2024-03-06).png",
-    "progress/Figure how to map grading demo post request.png",
-    "progress/Todo for merits.md",
-    "progress/Prompts.md",
-    "Figure how to map grading demo post request.png",
-    "progress/app.js memo.md",
+    "progress/img/Figure how to map grading demo post request.png",
     "RUNNING.md",
     "REFLECTION.md",
     "README.md",
@@ -310,11 +252,6 @@
     "Readwise/Articles/Unleash Your Creativity with GPT Builder Craft Your Unique ChatGPT for Any Purpose!.md",
     "Readwise/Articles/The Power of Continuous Learning.md",
     "Readwise/Articles/Horizontal Pod Autoscaling.md",
-    "Readwise/Articles/Paperwise.md",
-    "Readwise/Books/Kubernetes_done.pdf.md",
-    "Readwise/Articles/The Gift of Inner Solitude.md",
-    "Pasted image 20240229143221.png",
-    "starter/programming-ui/public/favicon.svg",
     "🍀/Calendar.canvas",
     "💻/📑/CV/CV - Builder Canvas.canvas",
     "🌱/Habits/Trackers/Statistics - habits🧘🏾.canvas",
