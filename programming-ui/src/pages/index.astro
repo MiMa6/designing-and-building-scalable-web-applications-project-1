@@ -4,12 +4,12 @@ import Handout from "../components/Handout.svelte";
 
 import Textfield from "../components/Textfield.svelte";
 import StatusAndGrading from "../components/StatusAndGrading.svelte";
-// import GetSubmissionButton from "../components/Buttons/GetSubmissionButton.svelte";
+import NextAssignmentButton from "../components/buttons/NextAssignmentButton.svelte";
 ---
 
 <Layout>
   <Handout client:only={"svelte"} />
   <Textfield client:only={"svelte"} />
   <StatusAndGrading client:only={"svelte"} />
-  {/*<GetSubmissionButton client:only={"svelte"} />*/}
+  <NextAssignmentButton client:only={"svelte"} />
 </Layout>

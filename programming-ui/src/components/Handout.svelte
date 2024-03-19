@@ -20,10 +20,11 @@
     console.log(responseData);
     totalPoints.set(responseData.data);
   };
+  onMount(fetchTotalPoints);
 
   const fetchRandomAssignment = async () => {
     console.log("Fetching random assignment");
-    const response = await fetch("/api/assignment", {
+    const response = await fetch("/api/assignments/random", {
       method: "Get",
       headers: {
         "Content-Type": "application/json",
@@ -36,10 +37,7 @@
     console.log(jsonData);
     console.log($assignment);
   };
-
-  onMount(fetchTotalPoints);
-  onMount(fetchRandomAssignment);
-
+  //onMount(fetchRandomAssignment);
 </script>
 
 <div class="flex py-5 px-10 flex-col flex-grow ml-4">
