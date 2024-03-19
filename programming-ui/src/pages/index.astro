@@ -1,0 +1,15 @@
+---
+import Layout from "../layout/Layout.astro";
+import Handout from "../components/Handout.svelte";
+
+import Textfield from "../components/Textfield.svelte";
+import StatusAndGrading from "../components/StatusAndGrading.svelte";
+import NextAssignmentButton from "../components/buttons/NextAssignmentButton.svelte";
+---
+
+<Layout>
+  <Handout client:only={"svelte"} />
+  <Textfield client:only={"svelte"} />
+  <StatusAndGrading client:only={"svelte"} />
+  <NextAssignmentButton client:only={"svelte"} />
+</Layout>
