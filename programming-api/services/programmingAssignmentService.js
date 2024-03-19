@@ -1,5 +1,13 @@
 import { sql } from "../database/database.js";
 
+const find = async (id) => {
+  return await sql`
+    SELECT * 
+    FROM programming_assignments
+    WHERE id = ${id};
+  `;
+};
+
 const findAll = async () => {
   return await sql`SELECT * FROM programming_assignments;`;
 };
@@ -12,4 +20,4 @@ const findSpecific = async (id) => {
   return await sql`SELECT * FROM programming_assignments WHERE id = ${id};`;
 };
 
-export { findAll, findRandom, findSpecific };
+export { find, findAll, findRandom, findSpecific };

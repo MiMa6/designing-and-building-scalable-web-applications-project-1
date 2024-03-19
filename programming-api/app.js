@@ -37,6 +37,22 @@ const handleGetAllAssignmentsRequest = async (request) => {
   });
 };
 
+const handlePostAssignmensRequest = async (request) => {
+  const requestData = await request.json();
+  const assignmentId = requestData.assignmentId;
+
+  console.log("assignmentId");
+  console.log(assignmentId);
+
+  const programmingAssignments = await programmingAssignmentService.find(
+    assignmentId
+  );
+
+  return new Response(JSON.stringify(programmingAssignments), {
+    headers: { "content-type": "application/json" },
+  });
+};
+
 const handleGetRandomAssignmentRequest = async (request) => {
   const programmingAssignments =
     await programmingAssignmentService.findRandom();
@@ -58,7 +74,6 @@ const handleGetAllSubmissionsRequest = async (request) => {
 
 const handlePostAssignmentRequest = async (request) => {
   const requestData = await request.json();
-
   const assignmentId = requestData.programming_assignment_id;
 
   const programmingAssignments =
@@ -191,14 +206,18 @@ const urlMapping = [
   },
 
   {
+    method: "POST",
+    pattern: new URLPattern({ pathname: "/assignment" }),
+    fn: handlePostAssignmensRequest,
+  },
+  {
     method: "GET",
     pattern: new URLPattern({ pathname: "/assignments" }),
     fn: handleGetAllAssignmentsRequest,
   },
-
   {
     method: "GET",
-    pattern: new URLPattern({ pathname: "/assignment" }),
+    pattern: new URLPattern({ pathname: "/assignments/random" }),
     fn: handleGetRandomAssignmentRequest,
   },
 
