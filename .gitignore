@@ -3,4 +3,6 @@ progress
 starter
 Examples
 Readwise
-.obsidian/
+.obsidian
+project.env
+
