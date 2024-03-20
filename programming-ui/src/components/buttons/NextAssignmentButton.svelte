@@ -1,13 +1,13 @@
 <script>
-  import {textAreaValue} from "../../stores/textAreaStore.js";
+  import { textAreaValue } from "../../stores/textAreaStore.js";
   import { assignment } from "../../stores/assignmentStore.js";
   import { onMount } from "svelte";
 
   const fetchAssignment = async () => {
-    let assignmentId = sessionStorage.getItem("assignmentId");
+    let assignmentId = 1;
 
-    if (assignmentId === null) {
-      assignmentId = 1;
+    if (sessionStorage.getItem("assignmentId")) {
+      assignmentId = sessionStorage.getItem("assignmentId");
     }
 
     console.log("Fetching assignment");
@@ -19,6 +19,7 @@
       body: JSON.stringify({ assignmentId: assignmentId }),
     });
 
+    sessionStorage.setItem("assignmentId", assignmentId);
     const jsonData = await response.json();
     assignment.set(jsonData[0]);
   };
