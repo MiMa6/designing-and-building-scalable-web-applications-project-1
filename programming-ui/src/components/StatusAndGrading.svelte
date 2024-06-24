@@ -2,6 +2,8 @@
   import { userUuid } from "../stores/stores.js";
   import { assignment } from "../stores/assignmentStore.js";
   import { textAreaValue } from "../stores/textAreaStore.js";
+  import { totalPoints } from "../stores/scoreStore.js";
+  import { onMount } from "svelte";
 
   let submissionStatus = "";
   let graderFeedback = "";
@@ -104,7 +106,7 @@
         "Submission already exists, copy latest grader feedback values..."
       );
 
-      const response2 = await fetch("/api/submissions/copy", {
+      await fetch("/api/submissions/copy", {
         method: "Post",
         headers: {
           "Content-Type": "application/json",
@@ -125,13 +127,18 @@
       alert(responseData.data.grader_feedback);
     } else if (responseData.status === 400) {
       console.log("Submission does not exists");
-      doGrading(data);
+      await doGrading(data);
       submissionStatus = "processed";
+
+      console.log("Fetching total points for userUuid");
+      fetchTotalPoints();
     } else {
       submissionStatus = "processed";
       console.log("Error in checking submission");
       alert("Error in checking submission");
     }
+
+
   };
 
   const fetchTotalPoints = async () => {
@@ -148,6 +155,7 @@
     });
     const responseData = await response.json();
     console.log(responseData);
+    totalPoints.set(responseData.data);
   };
 
   const postSubmission = async (dataForNewSubmission) => {
@@ -161,10 +169,9 @@
 
     console.log("New submission created");
     console.log(response);
-
-    console.log("Fetching total points for userUuid");
-    fetchTotalPoints();
   };
+
+  onMount(fetchTotalPoints);
 </script>
 
 <div class="w-full md:w-1/2 py-5 px-10">
@@ -176,6 +183,9 @@
       Grader feedback: <span class="text-green-500">{graderFeedback}</span>
     </p>
     <p>Correct: <span class="text-green-500">{correctAnswer}</span></p>
+    <p class="text-lg text-slate-500 font-medium text-center">
+      Total points: {$totalPoints * 100}
+    </p>
   </div>
 </div>
 <div class="flex justify-between mt-2"></div>
