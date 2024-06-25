@@ -3,28 +3,6 @@ import * as submissionService from "./services/submissionService.js";
 import { serve } from "./deps.js";
 import { sql } from "./database/database.js";
 
-const sockets = new Set();
-
-const sendMessage = (event) => {
-  sockets.forEach((socket) => socket.send(event.data));
-};
-
-const handleSocketRequest = async (request) => {
-  const { socket, response } = Deno.upgradeWebSocket(request);
-
-  socket.onmessage = async (event) => {
-    console.log("message event data");
-    console.log(event.data);
-    const submissionStatus = await submissionService.checkSubmissionStatus(
-      event.data
-    );
-    const data = JSON.stringify(submissionStatus);
-    socket.send(data);
-  };
-
-  return response;
-};
-
 const handleGetRoot = async (request) => {
   return new Response(`Hello from programmin API server`);
 };
@@ -72,7 +50,7 @@ const handleGetAllSubmissionsRequest = async (request) => {
   });
 };
 
-const handlePostAssignmentRequest = async (request) => {
+const handlePostGraderRequest = async (request) => {
   const requestData = await request.json();
   const assignmentId = requestData.programming_assignment_id;
 
@@ -108,6 +86,14 @@ const handlePostAssignmentRequest = async (request) => {
   }
 };
 
+const handlePollSubmissionById = async (request) => {
+  const requestData = await request.json();
+  const submissionId = requestData.submissionId;
+
+  const response = await submissionService.findSubmissionById(submissionId);
+  return response;
+};
+
 const handlePostSubmissionNewRequest = async (request) => {
   const requestData = await request.json();
 
@@ -115,30 +101,11 @@ const handlePostSubmissionNewRequest = async (request) => {
     programming_assignment_id: requestData.programming_assignment_id,
     code: requestData.code,
     user_uuid: requestData.user_uuid,
-    grader_feedback: requestData.grader_feedback,
-    correct: requestData.correct,
-    status: requestData.status,
+    graderFeedback: requestData.graderFeedback,
   };
 
   console.log(submissionData);
   const response = await submissionService.addNewSubmission(submissionData);
-
-  return response;
-};
-
-const handlePostSubmissionCopyRequest = async (request) => {
-  console.log("handlePostSubmissionCopyRequest");
-
-  const requestData = await request.json();
-
-  const submissionData = {
-    programming_assignment_id: requestData.programming_assignment_id,
-    code: requestData.code,
-    user_uuid: requestData.user_uuid,
-  };
-
-  console.log(submissionData);
-  const response = await submissionService.addNewSubmissionCopy(submissionData);
 
   return response;
 };
@@ -160,8 +127,24 @@ const handlePostSubmissionCheckRequest = async (request) => {
 
   return response;
 };
+const handlePostSubmissionCopyLegacyGradingRequest = async (request) => {
+  const requestData = await request.json();
 
-// TODO delete when not needded anymore
+  const submissionData = {
+    programming_assignment_id: requestData.programming_assignment_id,
+    code: requestData.code,
+    user_uuid: requestData.user_uuid,
+  };
+
+  console.log(submissionData);
+  const response = await submissionService.findLegacyGradingValues(
+    submissionData
+  );
+
+  console.log("handlePostSubmissionCopyRequest");
+  console.log(response);
+  return response;
+};
 
 const handlePostSubmissionUpdateRequest = async (request) => {
   const requestData = await request.json();
@@ -169,10 +152,15 @@ const handlePostSubmissionUpdateRequest = async (request) => {
   const updatedSubmissionData = {
     programming_assignment_id: requestData.programming_assignment_id,
     code: requestData.code,
+    submissionID: requestData.submissionId,
     user_uuid: requestData.user_uuid,
     grader_feedback: requestData.grader_feedback,
     correct: requestData.correct,
+    status: requestData.status,
   };
+
+  console.log("updatedSubmissionData");
+  console.log(updatedSubmissionData);
 
   const response = await submissionService.updateSubmission(
     updatedSubmissionData
@@ -190,21 +178,24 @@ const handlePostUserPointsRequest = async (request) => {
   return response;
 };
 
-// TODO: Update submission related requests to start with /submission, e.g. /submission/check
-
 const urlMapping = [
   {
     method: "GET",
     pattern: new URLPattern({ pathname: "/" }),
     fn: handleGetRoot,
   },
-
+  // Grade related patterns
   {
-    method: "GET",
-    pattern: new URLPattern({ pathname: "/ws" }),
-    fn: handleSocketRequest,
+    method: "POST",
+    pattern: new URLPattern({ pathname: "/grade" }),
+    fn: handlePostGraderRequest,
   },
-
+  {
+    method: "POST",
+    pattern: new URLPattern({ pathname: "/points" }),
+    fn: handlePostUserPointsRequest,
+  },
+  // Assignment related patterns
   {
     method: "POST",
     pattern: new URLPattern({ pathname: "/assignment" }),
@@ -220,47 +211,36 @@ const urlMapping = [
     pattern: new URLPattern({ pathname: "/assignments/random" }),
     fn: handleGetRandomAssignmentRequest,
   },
-
+  // Submission related patterns
   {
     method: "GET",
     pattern: new URLPattern({ pathname: "/submissions" }),
     fn: handleGetAllSubmissionsRequest,
   },
-
-  {
-    method: "POST",
-    pattern: new URLPattern({ pathname: "/grade" }),
-    fn: handlePostAssignmentRequest,
-  },
-
   {
     method: "POST",
     pattern: new URLPattern({ pathname: "/submissions/new" }),
     fn: handlePostSubmissionNewRequest,
   },
-
+  {
+    method: "POST",
+    pattern: new URLPattern({ pathname: "/submissions/poll" }),
+    fn: handlePollSubmissionById,
+  },
+  {
+    method: "POST",
+    pattern: new URLPattern({ pathname: "/submissions/check" }),
+    fn: handlePostSubmissionCheckRequest,
+  },
   {
     method: "POST",
     pattern: new URLPattern({ pathname: "/submissions/copy" }),
-    fn: handlePostSubmissionCopyRequest,
+    fn: handlePostSubmissionCopyLegacyGradingRequest,
   },
-
   {
     method: "POST",
-    pattern: new URLPattern({ pathname: "/check" }),
-    fn: handlePostSubmissionCheckRequest,
-  },
-
-  {
-    method: "POST",
-    pattern: new URLPattern({ pathname: "/update" }),
+    pattern: new URLPattern({ pathname: "/submissions/update" }),
     fn: handlePostSubmissionUpdateRequest,
-  },
-
-  {
-    method: "POST",
-    pattern: new URLPattern({ pathname: "/points" }),
-    fn: handlePostUserPointsRequest,
   },
 ];
 
