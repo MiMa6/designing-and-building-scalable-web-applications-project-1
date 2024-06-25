@@ -74,7 +74,6 @@ const checkIfSubmissionExists = async ({
         })
       );
     } else {
-      // TODO: change 404 to 200 and use other logic to see in component response status
       console.log("Submission with graderfeedback does not exixst");
       return new Response(
         JSON.stringify({

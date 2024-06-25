@@ -21,7 +21,7 @@
   };
 
   const createSubmission = async () => {
-    submissionStatus = "";
+    submissionStatus = "pending";
     graderFeedback = "";
     correctAnswer = "";
     
@@ -49,6 +49,7 @@
     console.log(responseDataSubmission.id);
     pollSubmissionStatus(responseDataSubmission.id);
 
+    
     console.log("Check if submission already exists...");
     const ifSubmissionExistsResponseData =
       await checkIfSubmissionExists(dataUpdated);
@@ -65,12 +66,6 @@
       );
 
       const legacyGradingValues = await copyLegacyGrading(dataGrading);
-
-      // TODO: update submission with submissionId with ...
-      // legacyGradingValues.correct & legacyGradingValues.grader_feedback & sub status = processed
-
-      //correctAnswer = legacyGradingValues.correct;
-      //graderFeedback = legacyGradingValues.grader_feedback;
     } else {
       console.log("Submission does not exists, lets do grading...");
       await doGrading(dataGrading);
@@ -167,7 +162,6 @@
         correct: true,
         status: "processed",
       });
-      //alert("Your Answer Was Correct\n Well done!");
     } else {
       console.log("errortype != OK, answer false, update submission...");
       updateSubmission({
@@ -176,7 +170,6 @@
         correct: false,
         status: "processed",
       });
-      //alert(graderResponseData.result);
     }
   };
 
