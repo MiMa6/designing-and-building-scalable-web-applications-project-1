@@ -17,13 +17,22 @@
   };
 </script>
 
-<textarea
-  bind:value={$textAreaValue}
-  style="width: 100%; padding: 1rem; border: 1px solid gray; border-radius: 0.25rem;"
-  class="text-base text-black font-base"
-  name=""
-  id=""
-  rows="10"
-  placeholder="Write your Python code here..."
-  on:keydown={handleKeyDown}
-></textarea>
+<div class="w-full md:w-2/3 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mb-6">
+  <div class="bg-gradient-to-r from-green-500 to-teal-600 p-4">
+    <h2 class="text-2xl font-bold text-white text-center">Code Editor</h2>
+  </div>
+  
+  <div class="p-6">
+    <div class="relative">
+      <textarea
+        bind:value={$textAreaValue}
+        class="w-full h-64 p-4 text-gray-800 bg-gray-50 rounded-lg border-2 border-gray-300 focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50 transition duration-200 ease-in-out resize-none font-mono text-sm"
+        placeholder="Write your Python code here..."
+        on:keydown={handleKeyDown}
+      ></textarea>
+      <div class="absolute top-3 right-3">
+        <span class="text-xs text-gray-500">Python</span>
+      </div>
+    </div>
+  </div>
+</div>
