@@ -144,29 +144,27 @@ const updateSubmission = async ({
   }
 };
 
-const fetchPoints = async ({ user_uuid }) => {
-  console.log("Fetching points");
+const fetchCorrectAssignmentIds = async ({ user_uuid }) => {
+  console.log("Fetching correct AssignmentIds");
   try {
     const result = await sql`
-    WITH correctassignment AS (
       SELECT DISTINCT programming_assignment_id
       FROM programming_assignment_submissions
       WHERE user_uuid = ${user_uuid}
-      AND correct = true
-    )
-    
-    SELECT COUNT(*) as points
-    FROM correctassignment;
+      AND correct = true;
     `;
 
+    const assignmentIds = result.map(({ programming_assignment_id }) => programming_assignment_id);
+    console.log("Fetch correct assignment ids result");
+    console.log(assignmentIds);
     return new Response(
       JSON.stringify({
         status: 200,
-        data: result[0].points,
+        data: assignmentIds,
       })
     );
   } catch (error) {
-    console.error("Error fetching points:", error.message);
+    console.error("Error fetching correct assignment ids:", error.message);
     return new Response("err", { status: 400 });
   }
 };
@@ -178,5 +176,5 @@ export {
   checkIfSubmissionExists,
   findLegacyGradingValues,
   updateSubmission,
-  fetchPoints,
+  fetchCorrectAssignmentIds,
 };
