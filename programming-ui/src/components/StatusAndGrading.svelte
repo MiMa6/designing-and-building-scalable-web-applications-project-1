@@ -3,12 +3,14 @@
   import { assignment } from "../stores/assignmentStore.js";
   import { textAreaValue } from "../stores/textAreaStore.js";
   import { totalPoints } from "../stores/scoreStore.js";
+  import { queue, currentSubmission } from "../stores/queueStore.js";
+
   import { onMount } from "svelte";
-  import Handout from "./Handout.svelte";
 
   let submissionStatus = "";
   let graderFeedback = "";
   let correctAnswer = "";
+  let isProcessing = false;
 
   const clearnErrorMessage = (errorMessage) => {
     const lines = errorMessage.split("\n");
@@ -19,6 +21,36 @@
     const firstWordClean = firstWord.replace(":", "").replace(/[\n\t]/g, "");
     return firstWordClean;
   };
+
+  function addToQueue() {
+    let submissionData = {
+      programming_assignment_id: $assignment.id,
+      code: $textAreaValue,
+      user_uuid: $userUuid,
+      graderFeedback: graderFeedback,
+    };
+
+    queue.update((q) => [...q, submissionData]);
+    processQueue();
+  }
+
+  async function processQueue() {
+    if (isProcessing) return;
+
+    queue.subscribe(async (q) => {
+      if (q.length > 0 && !isProcessing) {
+        isProcessing = true;
+        const submission = q[0];
+        currentSubmission.set(submission);
+        await createSubmission(currentSubmission);
+
+        isProcessing = false;
+        queue.update((q) => q.slice(1));
+        currentSubmission.set(null);
+        processQueue();
+      }
+    });
+  }
 
   const createSubmission = async () => {
     submissionStatus = "pending";
@@ -133,6 +165,7 @@
       correct: responseData.correct,
       status: "processed",
     });
+
     return responseData;
   };
 
@@ -203,40 +236,49 @@
   };
 
   onMount(fetchTotalPoints);
+  onMount(() => {
+    processQueue();
+  });
 </script>
-<div class="bg-gray-100 rounded-lg p-4">
-  <p class="text-xl text-gray-800 font-bold text-center">
-    Total Points: <span class="text-blue-600">{$totalPoints * 100}</span>
-  </p>
-</div>
 
-<div class="w-full md:w-2/3 mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+<div
+  class="w-full md:w-2/3 mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
+>
   <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-4">
     <h2 class="text-2xl font-bold text-white text-center">Submission Status</h2>
   </div>
-  
+
   <div class="p-6">
     <div class="space-y-4">
       <div class="flex items-center justify-between">
         <p class="text-gray-700 font-semibold">Status:</p>
-        <span class={`px-3 py-1 rounded-full text-sm font-medium ${
-          submissionStatus === "pending" ? "bg-yellow-100 text-yellow-800" : "bg-green-100 text-green-800"
-        }`}>
+        <span
+          class={`px-3 py-1 rounded-full text-sm font-medium ${
+            submissionStatus === "pending"
+              ? "bg-yellow-100 text-yellow-800"
+              : "bg-green-100 text-green-800"
+          }`}
+        >
           {submissionStatus}
         </span>
       </div>
 
-
       <div class="space-y-2">
         <p class="text-gray-700 font-semibold">Grader Feedback:</p>
-        <p class="text-gray-600 bg-gray-50 p-3 rounded-md">{graderFeedback || "No feedback yet"}</p>
+        <p class="text-gray-600 bg-gray-50 p-3 rounded-md">
+          {graderFeedback || "No feedback yet"}
+        </p>
       </div>
 
       <div class="flex items-center justify-between">
         <p class="text-gray-700 font-semibold">Correct:</p>
-        <span class={`px-3 py-1 rounded-full text-sm font-medium ${
-          correctAnswer === false ? "bg-red-100 text-red-800" : "bg-green-100 text-green-800"
-        }`}>
+        <span
+          class={`px-3 py-1 rounded-full text-sm font-medium ${
+            correctAnswer === false
+              ? "bg-red-100 text-red-800"
+              : "bg-green-100 text-green-800"
+          }`}
+        >
           {correctAnswer !== null ? (correctAnswer ? "Yes" : "No") : "N/A"}
         </span>
       </div>
@@ -246,7 +288,7 @@
   <div class="px-6 py-4 bg-gray-50 border-t border-gray-200">
     <button
       class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-      on:click={createSubmission}
+      on:click={addToQueue}
     >
       Submit for Grading
     </button>

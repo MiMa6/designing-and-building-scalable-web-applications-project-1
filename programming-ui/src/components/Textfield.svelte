@@ -1,6 +1,5 @@
 <script>
-
-  import {textAreaValue} from "../stores/textAreaStore.js";
+  import { textAreaValue } from "../stores/textAreaStore.js";
 
   // Lets user to create intentions with "tab" in textarea
   const handleKeyDown = (event) => {
@@ -10,18 +9,22 @@
       const end = event.target.selectionEnd;
 
       $textAreaValue =
-        $textAreaValue.substring(0, start) + "\t" + $textAreaValue.substring(end);
+        $textAreaValue.substring(0, start) +
+        "\t" +
+        $textAreaValue.substring(end);
 
       event.target.selectionStart = event.target.selectionEnd = start + 1;
     }
   };
 </script>
 
-<div class="w-full md:w-2/3 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mb-6">
+<div
+  class="w-full md:w-2/3 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mb-6"
+>
   <div class="bg-gradient-to-r from-green-500 to-teal-600 p-4">
     <h2 class="text-2xl font-bold text-white text-center">Code Editor</h2>
   </div>
-  
+
   <div class="p-6">
     <div class="relative">
       <textarea
