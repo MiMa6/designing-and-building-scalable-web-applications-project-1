@@ -169,11 +169,18 @@ const handlePostSubmissionUpdateRequest = async (request) => {
   return response;
 };
 
-const handlePostUserPointsRequest = async (request) => {
+const handlePosCorrectAssignmentIdsRequest = async (request) => {
   const requestData = await request.json();
   const userData = { user_uuid: requestData.user_uuid };
-  const response = await submissionService.fetchPoints(userData);
-  console.log("response.data");
+  const response = await submissionService.fetchCorrectAssignmentIds(userData);
+
+  return response;
+};
+
+const handleGetCorrectssignmenstRequest = async (request) => {
+  const requestData = await request.json();
+  const userData = { user_uuid: requestData.user_uuid };
+  const response = await submissionService.fetchCorrectAssignements(userData);
 
   return response;
 };
@@ -190,11 +197,6 @@ const urlMapping = [
     pattern: new URLPattern({ pathname: "/grade" }),
     fn: handlePostGraderRequest,
   },
-  {
-    method: "POST",
-    pattern: new URLPattern({ pathname: "/points" }),
-    fn: handlePostUserPointsRequest,
-  },
   // Assignment related patterns
   {
     method: "POST",
@@ -210,6 +212,11 @@ const urlMapping = [
     method: "GET",
     pattern: new URLPattern({ pathname: "/assignments/random" }),
     fn: handleGetRandomAssignmentRequest,
+  },
+  {
+    method: "POST",
+    pattern: new URLPattern({ pathname: "/assignments/correct" }),
+    fn: handlePosCorrectAssignmentIdsRequest,
   },
   // Submission related patterns
   {

@@ -194,6 +194,8 @@
         correct: true,
         status: "processed",
       });
+
+      console.log("add assignment id to completed list...");
     } else {
       console.log("errortype != OK, answer false, update submission...");
       updateSubmission({
@@ -223,7 +225,7 @@
       user_uuid: $userUuid,
     };
 
-    const response = await fetch("/api/points", {
+    const response = await fetch("/api/assignments/correct", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -231,8 +233,8 @@
       body: JSON.stringify(data),
     });
     const responseData = await response.json();
-    console.log(responseData);
-    totalPoints.set(responseData.data);
+    console.log(responseData.data);
+    totalPoints.set(responseData.data.length);
   };
 
   onMount(fetchTotalPoints);
