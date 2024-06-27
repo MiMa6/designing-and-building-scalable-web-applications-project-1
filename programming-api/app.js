@@ -1,39 +1,36 @@
 import * as programmingAssignmentService from "./services/programmingAssignmentService.js";
 import * as submissionService from "./services/submissionService.js";
 import { serve } from "./deps.js";
-import { sql } from "./database/database.js";
+import { cacheMethodCalls } from "./util/cacheUtil.js";
+
+const cachedprogrammingAssignmentService = cacheMethodCalls(programmingAssignmentService, [
+  "find",
+  "findAll",
+  "findSpecific",
+]);
 
 const handleGetRoot = async (request) => {
   return new Response(`Hello from programmin API server`);
 };
 
 const handleGetAllAssignmentsRequest = async (request) => {
-  const programmingAssignments = await programmingAssignmentService.findAll();
+  const programmingAssignments = await cachedprogrammingAssignmentService.findAll();
 
   return new Response(JSON.stringify(programmingAssignments), {
     headers: { "content-type": "application/json" },
   });
 };
 
-const handlePostAssignmensRequest = async (request) => {
+const handleFechAssignmentByIdRequest = async (request) => {
   const requestData = await request.json();
   const assignmentId = requestData.assignmentId;
 
   console.log("assignmentId");
   console.log(assignmentId);
 
-  const programmingAssignments = await programmingAssignmentService.find(
+  const programmingAssignments = await cachedprogrammingAssignmentService.find(
     assignmentId
   );
-
-  return new Response(JSON.stringify(programmingAssignments), {
-    headers: { "content-type": "application/json" },
-  });
-};
-
-const handleGetRandomAssignmentRequest = async (request) => {
-  const programmingAssignments =
-    await programmingAssignmentService.findRandom();
 
   return new Response(JSON.stringify(programmingAssignments), {
     headers: { "content-type": "application/json" },
@@ -55,7 +52,7 @@ const handlePostGraderRequest = async (request) => {
   const assignmentId = requestData.programming_assignment_id;
 
   const programmingAssignments =
-    await programmingAssignmentService.findSpecific(assignmentId);
+    await cachedprogrammingAssignmentService.findSpecific(assignmentId);
 
   console.log(programmingAssignments);
 
@@ -169,7 +166,7 @@ const handlePostSubmissionUpdateRequest = async (request) => {
   return response;
 };
 
-const handlePosCorrectAssignmentIdsRequest = async (request) => {
+const handleFetchCorrectAssignmentIdsRequest = async (request) => {
   const requestData = await request.json();
   const userData = { user_uuid: requestData.user_uuid };
   const response = await submissionService.fetchCorrectAssignmentIds(userData);
@@ -201,7 +198,7 @@ const urlMapping = [
   {
     method: "POST",
     pattern: new URLPattern({ pathname: "/assignment" }),
-    fn: handlePostAssignmensRequest,
+    fn: handleFechAssignmentByIdRequest,
   },
   {
     method: "GET",
@@ -209,14 +206,9 @@ const urlMapping = [
     fn: handleGetAllAssignmentsRequest,
   },
   {
-    method: "GET",
-    pattern: new URLPattern({ pathname: "/assignments/random" }),
-    fn: handleGetRandomAssignmentRequest,
-  },
-  {
     method: "POST",
     pattern: new URLPattern({ pathname: "/assignments/correct" }),
-    fn: handlePosCorrectAssignmentIdsRequest,
+    fn: handleFetchCorrectAssignmentIdsRequest,
   },
   // Submission related patterns
   {
