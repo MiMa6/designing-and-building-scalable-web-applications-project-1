@@ -1,19 +1,21 @@
-module.exports = {
-  timeout: 10000,
-  retries: 0,
+const { defineConfig, devices } = require("@playwright/test");
+
+/**
+ * @see https://playwright.dev/docs/test-configuration
+ */
+module.exports = defineConfig({
+  testDir: "./tests",
   reporter: "list",
-  workers: 5,
+  timeout: 10000,
   use: {
     baseURL: "http://localhost:7800",
-    headless: true,
-    ignoreHTTPSErrors: true,
+    trace: "off",
   },
+
   projects: [
     {
-      name: "e2e-headless-chromium",
-      use: {
-        browserName: "chromium",
-      },
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
     },
   ],
-};
+});

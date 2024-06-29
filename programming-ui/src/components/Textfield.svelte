@@ -28,6 +28,7 @@
   <div class="p-6">
     <div class="relative">
       <textarea
+        type="code-editor"
         bind:value={$textAreaValue}
         class="w-full h-64 p-4 text-gray-800 bg-gray-50 rounded-lg border-2 border-gray-300 focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50 transition duration-200 ease-in-out resize-none font-mono text-sm"
         placeholder="Write your Python code here..."
