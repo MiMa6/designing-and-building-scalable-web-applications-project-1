@@ -53,7 +53,7 @@ test.describe.serial("Sequential submission update tests", () => {
     expect(correctStatusValue).toBe("No");
   });
 
-  test("Create-submission-that-pass", async ({ page }) => {
+  test("Create-submission-that-pass-and-total-points", async ({ page }) => {
     await page.goto("http://localhost:7800");
 
     // Find button
@@ -63,6 +63,12 @@ test.describe.serial("Sequential submission update tests", () => {
 
     const isButtonVisible = await submitButton.isVisible();
     expect(isButtonVisible).toBe(true);
+
+    // Find total points
+    const totalPoints = await page.$('span[type="total-points"]');
+    const totalPointsVisible = await totalPoints.isVisible();
+    expect(totalPointsVisible).toBe(true);
+    const totalPointsValue = await totalPoints.innerText();
 
     await page.waitForTimeout(1000);
     // Find assignment id
@@ -150,6 +156,16 @@ test.describe.serial("Sequential submission update tests", () => {
     const graderFeedbackValue = await graderFeedback.innerText();
     // console log the value
     console.log(graderFeedbackValue);
+
+    // Check total points increase by 100
+    console.log("Check total points increase by 100");
+    const totalPointsNew = await page.$('span[type="total-points"]');
+    const totalPointsNewVisible = await totalPoints.isVisible();
+    expect(totalPointsNewVisible).toBe(true);
+    const totalPointsNewValue = await totalPoints.innerText();
+
+    // Check that totalPointsNew is not equal to totalPoints
+    expect(totalPointsNewValue).not.toBe(totalPointsValue);
   });
 
   test("Create-submission-that-pass-check-next-assignment", async ({
