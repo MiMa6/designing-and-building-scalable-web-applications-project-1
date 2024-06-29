@@ -52,6 +52,8 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
     expose:
       - 7000
+    deploy:
+      replicas: 2
 
   database:
     container_name: database-server-dab-p1-5f0ebb15-71d8-4226-a71d-1cbecc948990
