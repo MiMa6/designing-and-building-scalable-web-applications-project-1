@@ -52,7 +52,7 @@ docker compose -f docker-compose.prod.yml up -d
 ### Running all tests
 
 ```bash
-docker compose run --rm --entrypoint=npx playwright playwright test
+docker compose run --rm --entrypoint=npx e2e-playwright playwright test
 ```
 
 ## Testing - k6
