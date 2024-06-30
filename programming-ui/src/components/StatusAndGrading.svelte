@@ -171,6 +171,7 @@
 
   const doGrading = async (dataForGrading) => {
     console.log("Sent data to grader:");
+    console.log(dataForGrading)
     const response = await fetch("/api/grade", {
       method: "POST",
       headers: {
@@ -255,6 +256,7 @@
       <div class="flex items-center justify-between">
         <p class="text-gray-700 font-semibold">Status:</p>
         <span
+          type="submission-status"
           class={`px-3 py-1 rounded-full text-sm font-medium ${
             submissionStatus === "pending"
               ? "bg-yellow-100 text-yellow-800"
@@ -267,7 +269,10 @@
 
       <div class="space-y-2">
         <p class="text-gray-700 font-semibold">Grader Feedback:</p>
-        <p class="text-gray-600 bg-gray-50 p-3 rounded-md">
+        <p
+          type="grader-feedback"
+          class="text-gray-600 bg-gray-50 p-3 rounded-md"
+        >
           {graderFeedback || "No feedback yet"}
         </p>
       </div>
@@ -275,6 +280,7 @@
       <div class="flex items-center justify-between">
         <p class="text-gray-700 font-semibold">Correct:</p>
         <span
+          type="is-correct"
           class={`px-3 py-1 rounded-full text-sm font-medium ${
             correctAnswer === false
               ? "bg-red-100 text-red-800"
@@ -289,6 +295,7 @@
 
   <div class="px-6 py-4 bg-gray-50 border-t border-gray-200">
     <button
+      type="submitButton"
       class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
       on:click={addToQueue}
     >
